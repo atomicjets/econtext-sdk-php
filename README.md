@@ -10,7 +10,7 @@ recent version for you.
 ```
 {
    "require": {
-      "info-com/econtext-sdk-php": "0.1.*"
+      "atomicjets/econtext-sdk-php": "0.2.*"
    }
 }
 ```
