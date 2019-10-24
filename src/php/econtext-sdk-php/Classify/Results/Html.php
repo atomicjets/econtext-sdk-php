@@ -7,7 +7,7 @@ use eContext\Classify\Result;
  * A common interface for classification results.  Will always contain a
  * "categories" dictionary, may contain an "overlay" dictionary, and then a list
  * of results associated with each input.
- * 
+ *
  * The result set will use temporary files to store results - this will allow
  * us to send through a large list of keywords, and not maintain them and all
  * the associated data in memory.  Each time you switch to a new temp file set
@@ -17,26 +17,27 @@ use eContext\Classify\Result;
 class Html extends Result {
 
     protected function loadPage($data) {
-        if($data === null) {
+        if ($data === null) {
             return null;
         }
         parent::loadPage($data);
         $this->results = array(
-            "title"=>$this->get('title', $this->inner, ""),
-            "scored_categories"=>$this->get('scored_categories', $this->inner, array()),
-            "scored_keywords"=>$this->get('scored_keywords', $this->inner, array()),
-            "entities" => $this->get('entities', $this->inner, array())
+            "title" => $this->get('title', $this->inner, ""),
+            "scored_categories" => $this->get('scored_categories', $this->inner, array()),
+            "scored_keywords" => $this->get('scored_keywords', $this->inner, array()),
+            "overlays" => $this->getOverlays(),
+            "entities" => $this->get('entities', $this->inner, array()),
         );
         return True;
     }
-    
+
     /**
      * Iterate through a list of HTML classification results.  Each result
      * will include keyword flags, if requested, NLP entities, if requested, and
      * scored_categories and scored_keywords.
      */
     public function yieldResults() {
-        foreach($this->yieldPages() as $result) {
+        foreach ($this->yieldPages() as $result) {
             yield $this->results;
         }
     }

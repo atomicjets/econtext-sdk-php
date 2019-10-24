@@ -1,5 +1,5 @@
 {
-    "name":"info-com/econtext-sdk-php",
+    "name":"atomicjets/econtext-sdk-php",
     "description":"A PHP client to interact with the eContext API",
     "type":"library",
     "homepage":"http://www.econtext.com",
@@ -16,7 +16,6 @@
             "eContext\\": "src/php/econtext-sdk-php/"
         }
     },
-    
     "require": {
         "guzzlehttp/guzzle": "^6.1",
         "info-com/econtext-lib-file": "*"
