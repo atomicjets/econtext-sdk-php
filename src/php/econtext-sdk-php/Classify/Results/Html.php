@@ -21,13 +21,7 @@ class Html extends Result {
             return null;
         }
         parent::loadPage($data);
-        $this->results = array(
-            "title" => $this->get('title', $this->inner, ""),
-            "scored_categories" => $this->get('scored_categories', $this->inner, array()),
-            "scored_keywords" => $this->get('scored_keywords', $this->inner, array()),
-            "overlays" => $this->getOverlays(),
-            "entities" => $this->get('entities', $this->inner, array()),
-        );
+        $this->results = $this->inner;
         return True;
     }
 
